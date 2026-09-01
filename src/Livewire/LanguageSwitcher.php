@@ -18,7 +18,7 @@ final class LanguageSwitcher extends Component
     public function mount(): void
     {
         $this->currentLocale = App::getLocale();
-        $this->availableLocales = array_filter((array) config('app.supported_locales', []), is_string(...));
+        $this->availableLocales = array_filter((array) config('app.supported_locales', []), 'is_string');
     }
 
     public function switchLanguage(string $locale): void

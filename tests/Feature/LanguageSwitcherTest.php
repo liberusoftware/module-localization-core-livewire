@@ -5,7 +5,7 @@ use Liberu\Foundation\LocalizationLivewire\Livewire\LanguageSwitcher;
 use Liberu\PackageTestbench\TestUser;
 use Livewire\Livewire;
 
-test('language switcher component can switch language', function (): void {
+test('language switcher component can switch language', function () {
     Livewire::test(LanguageSwitcher::class)
         ->call('switchLanguage', 'es')
         ->assertRedirect();
@@ -13,7 +13,7 @@ test('language switcher component can switch language', function (): void {
     expect(Session::get('locale'))->toBe('es');
 });
 
-test('language switcher validates language code', function (): void {
+test('language switcher validates language code', function () {
     Session::flush();
 
     Livewire::test(LanguageSwitcher::class)
@@ -23,7 +23,7 @@ test('language switcher validates language code', function (): void {
     expect(Session::get('locale'))->toBeNull();
 });
 
-test('language switcher updates user preference when authenticated', function (): void {
+test('language switcher updates user preference when authenticated', function () {
     $user = TestUser::factory()->create(['locale' => 'en']);
 
     $this->actingAs($user);
@@ -35,14 +35,14 @@ test('language switcher updates user preference when authenticated', function ()
     expect($user->fresh()->locale)->toBe('fr');
 });
 
-test('language switcher displays current locale', function (): void {
+test('language switcher displays current locale', function () {
     app()->setLocale('es');
 
     Livewire::test(LanguageSwitcher::class)
         ->assertSet('currentLocale', 'es');
 });
 
-test('language switcher displays available locales', function (): void {
+test('language switcher displays available locales', function () {
     Livewire::test(LanguageSwitcher::class)
         ->assertSet('availableLocales', [
             'en' => 'English',
