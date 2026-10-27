@@ -7,7 +7,8 @@ use Livewire\Livewire;
 
 test('language switcher component can switch language', function () {
     Livewire::test(LanguageSwitcher::class)
-        ->call('switchLanguage', 'es');
+        ->call('switchLanguage', 'es')
+        ->assertRedirect();
 
     expect(Session::get('locale'))->toBe('es');
 });
@@ -28,7 +29,8 @@ test('language switcher updates user preference when authenticated', function ()
     $this->actingAs($user);
 
     Livewire::test(LanguageSwitcher::class)
-        ->call('switchLanguage', 'fr');
+        ->call('switchLanguage', 'fr')
+        ->assertRedirect();
 
     expect($user->fresh()->locale)->toBe('fr');
 });
