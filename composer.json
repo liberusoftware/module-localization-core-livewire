@@ -18,7 +18,7 @@
       "name": "localization-core-livewire"
     }
   },
-  "version": "1.4.8",
+  "version": "1.4.9",
   "autoload-dev": {
     "psr-4": {
       "Liberu\\Foundation\\LocalizationLivewire\\Tests\\": "tests/"
